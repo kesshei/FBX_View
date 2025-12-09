@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{61456f78-64a3-41c8-b5d7-477853e1e0a6}</ProjectGuid>
+    <RootNamespace>fbxview</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(FBX_DIR)include;$(DXSDK_DIR)Include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(FBX_DIR)lib\x64\debug;$(DXSDK_DIR)Lib\x64;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(DXSDK_DIR)Include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>Default</ConformanceMode>
+      <AdditionalIncludeDirectories>..\third_party\dx11;..\third_party\zlib;..\third_party\fbx;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libfbxsdk.lib;zdll.lib;dxerr.lib;dxguid.lib;d3dx9d.lib;d3d9.lib;dinput8.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>Default</ConformanceMode>
+      <AdditionalIncludeDirectories>..\third_party\dx11;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libfbxsdk-md.lib;libxml2-md.lib;zlib-md.lib;dxerr.lib;dxguid.lib;d3dx9d.lib;d3d9.lib;dinput8.lib;winmm.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="GGUIColor.h" />
+    <ClInclude Include="GGUIComponentText.h" />
+    <ClInclude Include="GGUIDefine.h" />
+    <ClInclude Include="GGUIEvent.h" />
+    <ClInclude Include="GGUIFileGGM.h" />
+    <ClInclude Include="GGUIFuncHelp.h" />
+    <ClInclude Include="GGUIImageset.h" />
+    <ClInclude Include="GGUIImagesetIO.h" />
+    <ClInclude Include="GGUIImagesetManager.h" />
+    <ClInclude Include="GGUIInputHelp.h" />
+    <ClInclude Include="GGUILogicFlowHelp.h" />
+    <ClInclude Include="GGUIPanel.h" />
+    <ClInclude Include="GGUIPoint.h" />
+    <ClInclude Include="GGUIRect.h" />
+    <ClInclude Include="GGUIRenderHelp.h" />
+    <ClInclude Include="GGUIRenderManager.h" />
+    <ClInclude Include="GGUIRichTextDefine.h" />
+    <ClInclude Include="GGUIUserDefine.h" />
+    <ClInclude Include="GGUIWindowBase.h" />
+    <ClInclude Include="GGUIWindowButton.h" />
+    <ClInclude Include="GGUIWindowContainer.h" />
+    <ClInclude Include="GGUIWindowFactory.h" />
+    <ClInclude Include="GGUIWindowImage.h" />
+    <ClInclude Include="GGUIWindowRichText.h" />
+    <ClInclude Include="GGUIWindowText.h" />
+    <ClInclude Include="NwUIDefine.h" />
+    <ClInclude Include="NwUILogicFlowHelp.h" />
+    <ClInclude Include="NwUIMain.h" />
+    <ClInclude Include="ReadMe.h" />
+    <ClInclude Include="SoArray.h" />
+    <ClInclude Include="SoArrayUID.h" />
+    <ClInclude Include="SoBitFlag.h" />
+    <ClInclude Include="SoCmdLineHelp.h" />
+    <ClInclude Include="SoCodeBaseInclude.h" />
+    <ClInclude Include="SoCursor.h" />
+    <ClInclude Include="SoD3DCamera.h" />
+    <ClInclude Include="SoD3DCameraBase.h" />
+    <ClInclude Include="SoD3DCameraUI.h" />
+    <ClInclude Include="SoD3DInclude.h" />
+    <ClInclude Include="SoD3DLogicFlowHelp.h" />
+    <ClInclude Include="SoD3DModelBase.h" />
+    <ClInclude Include="SoD3DModelCube.h" />
+    <ClInclude Include="SoD3DModelFbx.h" />
+    <ClInclude Include="SoD3DModelKK.h" />
+    <ClInclude Include="SoD3DModelManager.h" />
+    <ClInclude Include="SoD3DShaderBase.h" />
+    <ClInclude Include="SoD3DShaderGGUI.h" />
+    <ClInclude Include="SoD3DShaderManager.h" />
+    <ClInclude Include="SoD3DShaderModelCube.h" />
+    <ClInclude Include="SoD3DShaderModelFbx.h" />
+    <ClInclude Include="SoD3DShaderModelKK.h" />
+    <ClInclude Include="SoD3DShaderModelKKNoBone.h" />
+    <ClInclude Include="SoD3DShaderTerrain.h" />
+    <ClInclude Include="SoD3DSystem.h" />
+    <ClInclude Include="SoD3DTerrain.h" />
+    <ClInclude Include="SoD3DTexture.h" />
+    <ClInclude Include="SoD3DTextureManager.h" />
+    <ClInclude Include="SoD3DTextureSystemFont.h" />
+    <ClInclude Include="SoD3DUserDefine.h" />
+    <ClInclude Include="SoGameTime.h" />
+    <ClInclude Include="SoIntType.h" />
+    <ClInclude Include="SoMath.h" />
+    <ClInclude Include="SoMemoryHelp.h" />
+    <ClInclude Include="SoReadFile.h" />
+    <ClInclude Include="SoSimpleLoadFile.h" />
+    <ClInclude Include="SoSimpleLog.h" />
+    <ClInclude Include="SoStringConvert.h" />
+    <ClInclude Include="SoStringHelp.h" />
+    <ClInclude Include="SoSystemFont.h" />
+    <ClInclude Include="SoTimeHelp.h" />
+    <ClInclude Include="SoTinyString.h" />
+    <ClInclude Include="StFBXDefine.h" />
+    <ClInclude Include="StFBXManager.h" />
+    <ClInclude Include="StFBXModel.h" />
+    <ClInclude Include="StFBXUserDefine.h" />
+    <ClInclude Include="StKKDefine.h" />
+    <ClInclude Include="StKKFileKkbRead.h" />
+    <ClInclude Include="StKKFileKkbWrite.h" />
+    <ClInclude Include="StKKFileKkfRead.h" />
+    <ClInclude Include="StKKFileKkfWrite.h" />
+    <ClInclude Include="StKKFileKkmRead.h" />
+    <ClInclude Include="StKKModel.h" />
+    <ClInclude Include="WinApp.h" />
+    <ClInclude Include="WinAppHelp.h" />
+    <ClInclude Include="WinInputMsg.h" />
+    <ClInclude Include="WinInputMsgDispatch.h" />
+    <ClInclude Include="WinInputMsgManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GGUIColor.cpp" />
+    <ClCompile Include="GGUIComponentText.cpp" />
+    <ClCompile Include="GGUIFileGGM.cpp" />
+    <ClCompile Include="GGUIFuncHelp.cpp" />
+    <ClCompile Include="GGUIImageset.cpp" />
+    <ClCompile Include="GGUIImagesetIO.cpp" />
+    <ClCompile Include="GGUIImagesetManager.cpp" />
+    <ClCompile Include="GGUIInputHelp.cpp" />
+    <ClCompile Include="GGUILogicFlowHelp.cpp" />
+    <ClCompile Include="GGUIPanel.cpp" />
+    <ClCompile Include="GGUIPoint.cpp" />
+    <ClCompile Include="GGUIRect.cpp" />
+    <ClCompile Include="GGUIRenderHelp.cpp" />
+    <ClCompile Include="GGUIRenderManager.cpp" />
+    <ClCompile Include="GGUIRichTextDefine.cpp" />
+    <ClCompile Include="GGUIUserDefine.cpp" />
+    <ClCompile Include="GGUIWindowBase.cpp" />
+    <ClCompile Include="GGUIWindowButton.cpp" />
+    <ClCompile Include="GGUIWindowContainer.cpp" />
+    <ClCompile Include="GGUIWindowFactory.cpp" />
+    <ClCompile Include="GGUIWindowImage.cpp" />
+    <ClCompile Include="GGUIWindowRichText.cpp" />
+    <ClCompile Include="GGUIWindowText.cpp" />
+    <ClCompile Include="NwUILogicFlowHelp.cpp" />
+    <ClCompile Include="NwUIMain.cpp" />
+    <ClCompile Include="SoArray.cpp" />
+    <ClCompile Include="SoArrayUID.cpp" />
+    <ClCompile Include="SoCmdLineHelp.cpp" />
+    <ClCompile Include="SoCursor.cpp" />
+    <ClCompile Include="SoD3DCamera.cpp" />
+    <ClCompile Include="SoD3DCameraBase.cpp" />
+    <ClCompile Include="SoD3DCameraUI.cpp" />
+    <ClCompile Include="SoD3DLogicFlowHelp.cpp" />
+    <ClCompile Include="SoD3DModelBase.cpp" />
+    <ClCompile Include="SoD3DModelCube.cpp" />
+    <ClCompile Include="SoD3DModelFbx.cpp" />
+    <ClCompile Include="SoD3DModelKK.cpp" />
+    <ClCompile Include="SoD3DModelManager.cpp" />
+    <ClCompile Include="SoD3DShaderBase.cpp" />
+    <ClCompile Include="SoD3DShaderGGUI.cpp" />
+    <ClCompile Include="SoD3DShaderManager.cpp" />
+    <ClCompile Include="SoD3DShaderModelCube.cpp" />
+    <ClCompile Include="SoD3DShaderModelFbx.cpp" />
+    <ClCompile Include="SoD3DShaderModelKK.cpp" />
+    <ClCompile Include="SoD3DShaderModelKKNoBone.cpp" />
+    <ClCompile Include="SoD3DShaderTerrain.cpp" />
+    <ClCompile Include="SoD3DSystem.cpp" />
+    <ClCompile Include="SoD3DTerrain.cpp" />
+    <ClCompile Include="SoD3DTexture.cpp" />
+    <ClCompile Include="SoD3DTextureManager.cpp" />
+    <ClCompile Include="SoD3DTextureSystemFont.cpp" />
+    <ClCompile Include="SoD3DUserDefine.cpp" />
+    <ClCompile Include="SoGameTime.cpp" />
+    <ClCompile Include="SoMath.cpp" />
+    <ClCompile Include="SoMemoryHelp.cpp" />
+    <ClCompile Include="SoReadFile.cpp" />
+    <ClCompile Include="SoSimpleLoadFile.cpp" />
+    <ClCompile Include="SoSimpleLog.cpp" />
+    <ClCompile Include="SoStringConvert.cpp" />
+    <ClCompile Include="SoStringHelp.cpp" />
+    <ClCompile Include="SoSystemFont.cpp" />
+    <ClCompile Include="SoTimeHelp.cpp" />
+    <ClCompile Include="SoTinyString.cpp" />
+    <ClCompile Include="StFBXDefine.cpp" />
+    <ClCompile Include="StFBXManager.cpp" />
+    <ClCompile Include="StFBXModel.cpp" />
+    <ClCompile Include="StKKDefine.cpp" />
+    <ClCompile Include="StKKFileKkbRead.cpp" />
+    <ClCompile Include="StKKFileKkbWrite.cpp" />
+    <ClCompile Include="StKKFileKkfRead.cpp" />
+    <ClCompile Include="StKKFileKkfWrite.cpp" />
+    <ClCompile Include="StKKFileKkmRead.cpp" />
+    <ClCompile Include="StKKModel.cpp" />
+    <ClCompile Include="WinApp.cpp" />
+    <ClCompile Include="WinAppHelp.cpp" />
+    <ClCompile Include="WinInputMsgDispatch.cpp" />
+    <ClCompile Include="WinInputMsgManager.cpp" />
+    <ClCompile Include="WinMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Log_20170901.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
