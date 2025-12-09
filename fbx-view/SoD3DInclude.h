@@ -4,13 +4,13 @@
 //----------------------------------------------------------------
 #include <D3D11.h>
 #include <D3DX11tex.h>
-#include <d3dx11effect.h>
+//#include <d3dx11effect.h>
 #include <xnamath.h>
 //----------------------------------------------------------------
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "d3dx11.lib")
 #pragma comment(lib, "dxgi.lib")
-#pragma comment(lib, "d3dx11effect.lib")
+//#pragma comment(lib, "d3dx11effect.lib")
 #pragma comment(lib, "d3dcompiler.lib")
 //----------------------------------------------------------------
 #include <string>

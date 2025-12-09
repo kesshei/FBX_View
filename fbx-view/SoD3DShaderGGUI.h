@@ -33,10 +33,10 @@ private:
 private:
 	ID3D11InputLayout* m_pInputLayout;
 	ID3D11BlendState* m_pBlendState;
-	ID3DX11Effect* m_pFxEffect;
-	ID3DX11EffectTechnique* m_pFxTech;
-	ID3DX11EffectMatrixVariable* m_pFxMatViewProj;
-	ID3DX11EffectShaderResourceVariable* m_pFxTextureList[SoD3DShaderGGUI_TexListSize];
+	//ID3DX11Effect* m_pFxEffect;
+	//ID3DX11EffectTechnique* m_pFxTech;
+	//ID3DX11EffectMatrixVariable* m_pFxMatViewProj;
+	//ID3DX11EffectShaderResourceVariable* m_pFxTextureList[SoD3DShaderGGUI_TexListSize];
 };
 //----------------------------------------------------------------
 #endif //_SoD3DShaderGGUI_h_
