@@ -1,10 +1,18 @@
 //----------------------------------------------------------------
 #include "WinApp.h"
 #include "WinAppHelp.h"
+#include "StFBXManager.h"
+#include "SoSimpleLog.h"
 //----------------------------------------------------------------
 //³ÌÐòÈë¿Ú
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
+	if (StFBXManager::CreateFBXManager() == false)
+	{
+		SoLogError("SoD3DLogicFlowHelp_Create : StFBXManager::CreateFBXManager() fail");
+		return false;
+	}
+	WinAppHelp_WindowMsg_OnDropFile("box.fbx");
 	do 
 	{
 		bool bEventResult = true;

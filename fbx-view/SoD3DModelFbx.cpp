@@ -28,6 +28,22 @@ bool SoD3DModelFbx::InitModel(void* pInitParam)
 	bool bSuccess = false;
 	do 
 	{
+		//遍历并获取相关数据
+		std::vector<std::vector<int>> Vertexs(pFbxParam->pMeshData->nVertexCount);
+		std::vector<int> Indexs(pFbxParam->pMeshData->nIndexCount);
+		unsigned int* theIndexBuff = (unsigned int*)(pFbxParam->pMeshData->pIndexBuff);
+ 
+		for (int vertexIndex = 0; vertexIndex < pFbxParam->pMeshData->nVertexCount; vertexIndex++)
+		{
+			float* pVertexData = (float*)(pFbxParam->pMeshData->pVertexBuff + 32 * vertexIndex);
+			Vertexs[vertexIndex].push_back(pVertexData[0]);
+			Vertexs[vertexIndex].push_back(pVertexData[1]);
+			Vertexs[vertexIndex].push_back(pVertexData[2]);
+		}
+		for (int i = 0; i < pFbxParam->pMeshData->nIndexCount; i++)
+		{
+			Indexs[i] = theIndexBuff[i];
+		}
 		if (CreateVertexBuffer(pFbxParam->pMeshData) == false)
 		{
 			break;
