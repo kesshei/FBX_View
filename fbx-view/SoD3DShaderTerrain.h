@@ -30,11 +30,11 @@ private:
 private:
 	static SoD3DShaderTerrain* ms_pInstance;
 	ID3D11InputLayout* m_pInputLayout;
-	//ID3DX11Effect* m_pFxEffect;
-	//ID3DX11EffectTechnique* m_pFxTech;
-	//ID3DX11EffectMatrixVariable* m_pFxWorldViewProj;
-	//ID3DX11EffectShaderResourceVariable* m_pFxTexture1;
-	//ID3DX11EffectShaderResourceVariable* m_pFxTexture2;
+	ID3DX11Effect* m_pFxEffect;
+	ID3DX11EffectTechnique* m_pFxTech;
+	ID3DX11EffectMatrixVariable* m_pFxWorldViewProj;
+	ID3DX11EffectShaderResourceVariable* m_pFxTexture1;
+	ID3DX11EffectShaderResourceVariable* m_pFxTexture2;
 };
 //----------------------------------------------------------------
 #endif //_SoD3DShaderTerrain_h_

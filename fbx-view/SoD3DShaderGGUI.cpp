@@ -8,14 +8,14 @@
 SoD3DShaderGGUI::SoD3DShaderGGUI()
 :m_pInputLayout(0)
 ,m_pBlendState(0)
-//,m_pFxEffect(0)
-//,m_pFxTech(0)
-//,m_pFxMatViewProj(0)
+,m_pFxEffect(0)
+,m_pFxTech(0)
+,m_pFxMatViewProj(0)
 {
-	//for (int i = 0; i < SoD3DShaderGGUI_TexListSize; ++i)
-	//{
-	//	m_pFxTextureList[i] = 0;
-	//}
+	for (int i = 0; i < SoD3DShaderGGUI_TexListSize; ++i)
+	{
+		m_pFxTextureList[i] = 0;
+	}
 }
 //----------------------------------------------------------------
 SoD3DShaderGGUI::~SoD3DShaderGGUI()
@@ -41,7 +41,7 @@ bool SoD3DShaderGGUI::InitD3DShaderGGUI()
 		return false;
 	}
 
-	/*HRESULT hr = D3DX11CreateEffectFromMemory(kShaderFile.GetData(), kShaderFile.GetSize(), 0, pD3DDevice, &m_pFxEffect);
+	HRESULT hr = D3DX11CreateEffectFromMemory(kShaderFile.GetData(), kShaderFile.GetSize(), 0, pD3DDevice, &m_pFxEffect);
 	if (FAILED(hr))
 	{
 		return false;
@@ -53,7 +53,7 @@ bool SoD3DShaderGGUI::InitD3DShaderGGUI()
 	for (int i = 0; i < SoD3DShaderGGUI_TexListSize; ++i)
 	{
 		m_pFxTextureList[i] = pFxTextureList->GetElement(i)->AsShaderResource();
-	}*/
+	}
 
 	if (CreateInputLayout() == false)
 	{
@@ -79,17 +79,17 @@ void SoD3DShaderGGUI::ClearD3DShaderGGUI()
 		m_pBlendState->Release();
 		m_pBlendState = 0;
 	}
-	//m_pFxTech = 0;
-	//m_pFxMatViewProj = 0;
-	//for (int i = 0; i < SoD3DShaderGGUI_TexListSize; ++i)
-	//{
-	//	m_pFxTextureList[i] = 0;
-	//}
-	//if (m_pFxEffect)
-	//{
-	//	m_pFxEffect->Release();
-	//	m_pFxEffect = 0;
-	//}
+	m_pFxTech = 0;
+	m_pFxMatViewProj = 0;
+	for (int i = 0; i < SoD3DShaderGGUI_TexListSize; ++i)
+	{
+		m_pFxTextureList[i] = 0;
+	}
+	if (m_pFxEffect)
+	{
+		m_pFxEffect->Release();
+		m_pFxEffect = 0;
+	}
 }
 //----------------------------------------------------------------
 void SoD3DShaderGGUI::ProcessRender(void* pParam)
@@ -106,7 +106,7 @@ void SoD3DShaderGGUI::ProcessRender(void* pParam)
 	blendFactor[3] = 0.0f;
 	pD3DDeviceContext->OMSetBlendState(m_pBlendState, blendFactor, 0xFFFFFFFF);
 
-	/*for (int i = 0; i < SoD3DShaderGGUI_TexListSize; ++i)
+	for (int i = 0; i < SoD3DShaderGGUI_TexListSize; ++i)
 	{
 		if (i < pGGUIParam->nSRVCount)
 		{
@@ -133,50 +133,49 @@ void SoD3DShaderGGUI::ProcessRender(void* pParam)
 
 		m_pFxTech->GetPassByIndex(p)->Apply(0, pD3DDeviceContext);
 		pD3DDeviceContext->DrawIndexed(pGGUIParam->uiIndexCount, 0, 0);
-	}*/
+	}
 }
 //----------------------------------------------------------------
 bool SoD3DShaderGGUI::CreateInputLayout()
 {
-	return false;
-	//if (m_pFxTech == 0)
-	//{
-	//	return false;
-	//}
+	if (m_pFxTech == 0)
+	{
+		return false;
+	}
 
-	//ID3D11Device* pD3DDevice = SoD3DSystem::Get()->GetD3DDevice();
-	//HRESULT hr = S_OK;
+	ID3D11Device* pD3DDevice = SoD3DSystem::Get()->GetD3DDevice();
+	HRESULT hr = S_OK;
 
-	//const int nDescCount = 3;
-	//D3D11_INPUT_ELEMENT_DESC kDesc[3];
-	//kDesc[0].SemanticName = "POSITION";
-	//kDesc[0].SemanticIndex = 0;
-	//kDesc[0].Format = DXGI_FORMAT_R32G32B32_FLOAT;
-	//kDesc[0].InputSlot = 0;
-	//kDesc[0].AlignedByteOffset = 0;
-	//kDesc[0].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
-	//kDesc[0].InstanceDataStepRate = 0;
-	////
-	//kDesc[1].SemanticName = "TEXCOORD";
-	//kDesc[1].SemanticIndex = 0;
-	//kDesc[1].Format = DXGI_FORMAT_R32G32B32_FLOAT;
-	//kDesc[1].InputSlot = 0;
-	//kDesc[1].AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT;
-	//kDesc[1].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
-	//kDesc[1].InstanceDataStepRate = 0;
-	////
-	//kDesc[2].SemanticName = "COLOR";
-	//kDesc[2].SemanticIndex = 0;
-	//kDesc[2].Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
-	//kDesc[2].InputSlot = 0;
-	//kDesc[2].AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT;
-	//kDesc[2].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
-	//kDesc[2].InstanceDataStepRate = 0;
+	const int nDescCount = 3;
+	D3D11_INPUT_ELEMENT_DESC kDesc[3];
+	kDesc[0].SemanticName = "POSITION";
+	kDesc[0].SemanticIndex = 0;
+	kDesc[0].Format = DXGI_FORMAT_R32G32B32_FLOAT;
+	kDesc[0].InputSlot = 0;
+	kDesc[0].AlignedByteOffset = 0;
+	kDesc[0].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+	kDesc[0].InstanceDataStepRate = 0;
+	//
+	kDesc[1].SemanticName = "TEXCOORD";
+	kDesc[1].SemanticIndex = 0;
+	kDesc[1].Format = DXGI_FORMAT_R32G32B32_FLOAT;
+	kDesc[1].InputSlot = 0;
+	kDesc[1].AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT;
+	kDesc[1].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+	kDesc[1].InstanceDataStepRate = 0;
+	//
+	kDesc[2].SemanticName = "COLOR";
+	kDesc[2].SemanticIndex = 0;
+	kDesc[2].Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+	kDesc[2].InputSlot = 0;
+	kDesc[2].AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT;
+	kDesc[2].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+	kDesc[2].InstanceDataStepRate = 0;
 
-	//D3DX11_PASS_DESC passDesc;
-	//m_pFxTech->GetPassByIndex(0)->GetDesc(&passDesc);
-	//hr = pD3DDevice->CreateInputLayout(kDesc, nDescCount, passDesc.pIAInputSignature, passDesc.IAInputSignatureSize, &m_pInputLayout);
-	//return SUCCEEDED(hr);
+	D3DX11_PASS_DESC passDesc;
+	m_pFxTech->GetPassByIndex(0)->GetDesc(&passDesc);
+	hr = pD3DDevice->CreateInputLayout(kDesc, nDescCount, passDesc.pIAInputSignature, passDesc.IAInputSignatureSize, &m_pInputLayout);
+	return SUCCEEDED(hr);
 }
 //----------------------------------------------------------------
 bool SoD3DShaderGGUI::CreateBlendState()
