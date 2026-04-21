@@ -8,3 +8,15 @@
 15:03:59:222 [DEBUG] StFBXManager::InitFBXManager : success
 15:04:00:529 [DEBUG] StFBXManager::ClearFBXManager : start
 ========2026-04-21 15:04:00 end========
+========2026-04-21 15:05:49 begin========
+15:05:49:998 [DEBUG] StFBXManager::InitFBXManager : success
+15:05:58:264 [DEBUG] StFBXManager::ClearFBXManager : start
+========2026-04-21 15:05:58 end========
+========2026-04-21 15:40:30 begin========
+15:40:31:070 [DEBUG] StFBXManager::InitFBXManager : success
+15:40:32:123 [DEBUG] StFBXManager::ClearFBXManager : start
+========2026-04-21 15:40:32 end========
+========2026-04-21 15:43:23 begin========
+15:43:23:458 [DEBUG] StFBXManager::InitFBXManager : success
+15:43:24:494 [DEBUG] StFBXManager::ClearFBXManager : start
+========2026-04-21 15:43:24 end========
