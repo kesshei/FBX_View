@@ -123,10 +123,11 @@ bool WinApp::CreateAppWindow(HINSTANCE hInstance)
 	{
 		//³ö´íÁË
 	}
-	const int nRealWidth = winRect.right-winRect.left;
-	const int nRealHeight = winRect.bottom-winRect.top;
+	int nRealWidth = winRect.right-winRect.left;
+	int nRealHeight = winRect.bottom-winRect.top;
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
+	nRealWidth = 400;
+	nRealHeight = 300;
 	HWND hWnd = CreateWindowEx(dwWinStyleEx, m_szWCName, m_szWindowTitle, dwWinStyle, 
 		nPosX, nPosY, nRealWidth, nRealHeight,
 		hWndParent, hMenu, hInstance, lpParam);
